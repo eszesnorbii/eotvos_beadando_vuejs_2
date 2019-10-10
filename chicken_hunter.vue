@@ -14,8 +14,7 @@
       :min="maxSpeed"
       :max="minSpeed"
       v-model="speed"
-      :disabled="isFreeplay == false"
-    />
+      :disabled="isFreeplay == false"/>
     <br />
 
     <label v-if="levelUpCondition == true">{{ levelUpMessage }}</label>
@@ -30,8 +29,8 @@
         :key="i"
         v-for="(link, i) in enemies"
         @click="clickListener(i)"
-      />
-      <label class="speed">{{ speed/1000 }} {{speedUnit}}</label>
+      />Ł
+      <label class="speed">{{ speed / 1000 }} {{speedUnit}}</label>
     </div>
   </div>
 </template>
@@ -46,7 +45,7 @@ const MIN_SPEED = 3000;
 const MAX_SPEED = 500;
 const START_SPEED = MIN_SPEED;
 const SPEED_MODIFICATION = 500;
-const LEVEL_UP_LIMIT = 20;
+const LEVEL_UP_LIMIT = 15;
 const LEVEl_UP_TIMEOUT = 2000;
 
 const MOTIVATION = "Találd el a csirkéket!";
@@ -94,7 +93,7 @@ export default {
     },
     loop() {
       if (this.counter >= LEVEL_UP_LIMIT && !this.isFreeplay) {
-        if (this.speed == MIN_SPEED) {
+        if (this.speed == MAX_SPEED) {
           this.onGameOver();
           this.levelUpCondition = true;
           this.levelUpMessage = GAME_FINISHED;
